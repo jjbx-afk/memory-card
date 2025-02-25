@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="main.css" />
+        <script src="main.js"></script>
+    </head>
+    <body>
+        <header>
+            <div>
+                <h1>Memory Card Game</h1>
+            </div>
+
+            <div>
+                <input
+                    id="inputNbrOfCard"
+                    class="input"
+                    value="48"
+                    placeholder="48"
+                    type="number"
+                    min="4"
+                    max="100"
+                />
+                <button id="btnRestart" class="btn">restart</button>
+            </div>
+
+            <div>Score <span id="currentScore">0</span></div>
+        </header>
+        <main>
+            <div id="memoryCards">
+                <div class="memoryCard">??</div>
+            </div>
+        </main>
+        <footer>Made in Liip</footer>
+    </body>
+</html>
