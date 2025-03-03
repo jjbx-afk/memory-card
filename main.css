@@ -1,0 +1,51 @@
+
+
+h1 {
+    margin-block: 5%;
+    color: #FA739D;
+    font-size: 15px;
+}
+
+body {
+    font-family: Inter, sans-serif;
+    background-color:#FFC7D8;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 3%;
+    align-items: center;
+
+}
+
+footer {
+    position: fixed;
+    left: 0%;
+    bottom: 0%;
+    width: 100%;
+    text-align: center;
+    font-size: 15px;
+    padding: 2%;
+    margin-top: 8%;
+}
+
+#memoryCards {
+    width: auto;
+    margin-inline: auto;
+    border: 2px solid #000000;
+    clear: both;
+    border-radius: 5px;
+    padding: 4%;
+}
+
+.memoryCard{
+    margin: 0;
+    border: 2px solid #000000;
+    clear: both;
+    border-radius: 5px;
+    width : 80px;
+    height : 80px;
+    border-style: dashed;
+    text-align: center;
+}
