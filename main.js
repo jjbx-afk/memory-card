@@ -1,5 +1,5 @@
 
-// try to reach the memory card class to put in a for loop 
+// remove div 
 // loop show ?? cards as the input is 
 // if card is clicked use randomiser for half of the card 
 // show the card for 3 sec 
@@ -10,25 +10,26 @@
 
 
 
+const container = document.querySelector("#memoryCards");
+container.classList.add("container");
+container.querySelector(".memoryCard").remove();
 
-let repeatDiv = document.getElementsByClassName("memoryCard");
+document.getElementById("inputNbrOfCard").value;
+const input = document.getElementById("inputNbrOfCard");
 
+const btn = document.getElementById("btnRestart");
+btn.addEventListener('click', onClick);
 
-for (let i = 0; i < 10; i++) {
+const valueInput = input.value;
+function onClick() {
 
-    repeatDiv.appendChild(repeatDiv);
+    for (i = 0; i < valueInput; i++) {
 
+        let cards = document.createElement("div");
+        cards.textContent = "??"
+        container.appendChild(cards);
+        cards.classList.add("card");
+    }
 
-};
-
-
-
-function randomCard(min, max) {
-    const minNumber = Math.ceil(min);
-    const maxNumber = Math.ceil(max);
-    let randomNum = console.log(Math.floor(Math.random() * (maxNumber - minNumber)));
-    let card =  document.createElement("div");
-    document.body.appendChild(card);
-    card.textContent = 
 }
-randomCard
+
