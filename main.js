@@ -1,3 +1,5 @@
+
+
 const container = document.querySelector("#memoryCards");
 container.classList.add("container");
 
@@ -5,44 +7,61 @@ container.querySelector(".memoryCard").remove();
 
 const input = document.getElementById("inputNbrOfCard");
 const valueInput = input.value;
+console.log(valueInput);
+
 
 const btn = document.getElementById("btnRestart");
-document.getElementById("btnRestart").innerHTML = "start"; 
+document.getElementById("btnRestart").innerHTML = "start";
 
 
-btn.addEventListener("click", backCard());
+btn.addEventListener("click", backOfCards());
 
-function backCard() {
+// generate random numbers  
 
-for (i = 0; i < 10; i++) {
+function generateCards(count) {
+        let allCards = [];
 
-        let cards = document.createElement("div");
-        cards.textContent = "??";
-        container.appendChild(cards);
-        cards.classList.add("card");
+        for (let i = 1; i <= count / 2; i++) {
+                allCards.push(i, i);
+        }
 
- 
-}
-}
+        // [1, 1, 2, 2, 3, 3 ...]
 
-function returnedCard() {
+        for (let i = allCards.length; i >= 0; i--) {
+                const j = Math.floor(Math.random() * i);
 
-        cards.addEventListener("click", () => onClick);
-        let rnd =  Math.floor(Math.random() * 10);
-        console.log(rnd);
-        if (cards.clicked == true) {
-         cards.innerHTML = rnd;
+                [allCards[i], allCards[j]] = [allCards[j], allCards[i]]
+        }
 
-}
+        // [2, 3, 1, 2, 1, 3]
+        return allCards;
 }
 
 
+// give an index to each card and match it with a number 
+
+function backOfCards() {
+
+        const allCards = generateCards(10);
+
+        for (i = 0; i < allCards.length - 1; i++) {
+
+                let cards = document.createElement("div");
+                cards.textContent = "??";
+                container.appendChild(cards);
+                cards.classList.add("card");
+                cards.dataset.number = allCards[i];
+                console.log(cards.dataset.number);
+        }
+        if (cards.clicked == true){
 
 
+        }
+}
 
-// while (numbersArr.length > 0) { 
-//     let cards = document.createElement("div");
-//     cards.textContent = "??";
-//     let numbersArr = Array.from({ length: 10 }, (_, i) => i + 1); 
-//     const currentNumber = numbers.splice(10, rnd);
-//     let rnd =  Math.floor(Math.random() * numbersArr);
+
+// when car clicked show the data number for 3 sec 
+// if 1 card is clicked wait for another to be clicked
+// if 2 cards clicked compare them 
+// if the cards are the same make them disappear and add + 1 to the score 
+// Else put a message that says wrong and move on 
