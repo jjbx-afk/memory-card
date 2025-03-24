@@ -5,18 +5,24 @@ container.classList.add("container");
 
 container.querySelector(".memoryCard").remove();
 
-const input = document.getElementById("inputNbrOfCard");
-const valueInput = input.value;
+let input = document.getElementById("inputNbrOfCard");
+let valueInput = input.value;
 console.log(valueInput);
 
+// store the value when typed and start clicked
 
 const btn = document.getElementById("btnRestart");
 document.getElementById("btnRestart").innerHTML = "start";
-
-
 btn.addEventListener("click", backOfCards());
 
-// generate random numbers  
+
+// function updateInput(){
+//  if new value change the var 
+
+// }
+
+
+// generate random numbers    
 
 function generateCards(count) {
         let allCards = [];
@@ -27,7 +33,7 @@ function generateCards(count) {
 
         // [1, 1, 2, 2, 3, 3 ...]
 
-        for (let i = allCards.length; i >= 0; i--) {
+        for (let i = allCards.length - 1; i >= 0; i--) {
                 const j = Math.floor(Math.random() * i);
 
                 [allCards[i], allCards[j]] = [allCards[j], allCards[i]]
@@ -42,9 +48,9 @@ function generateCards(count) {
 
 function backOfCards() {
 
-        const allCards = generateCards(10);
+        const allCards = generateCards(valueInput);
 
-        for (i = 0; i < allCards.length - 1; i++) {
+        for (i = 0; i < allCards.length ; i++) {
 
                 let cards = document.createElement("div");
                 cards.textContent = "??";
@@ -53,12 +59,8 @@ function backOfCards() {
                 cards.dataset.number = allCards[i];
                 console.log(cards.dataset.number);
         }
-        if (cards.clicked == true){
-
-
-        }
 }
-
+ 
 
 // when car clicked show the data number for 3 sec 
 // if 1 card is clicked wait for another to be clicked
