@@ -1,19 +1,20 @@
 
-
 const container = document.querySelector("#memoryCards");
 container.classList.add("container");
 
 container.querySelector(".memoryCard").remove();
 
 let input = document.getElementById("inputNbrOfCard");
-let valueInput = input.value;
-console.log(valueInput);
 
 // store the value when typed and start clicked
 
 const btn = document.getElementById("btnRestart");
 document.getElementById("btnRestart").innerHTML = "start";
-btn.addEventListener("click", backOfCards());
+btn.addEventListener("click", backOfCards);
+
+// if (btn.clicked == true){
+//         document.getElementById("btnRestart").innerHTML  = "restart";
+// }
 
 
 // function updateInput(){
@@ -38,7 +39,7 @@ function generateCards(count) {
 
                 [allCards[i], allCards[j]] = [allCards[j], allCards[i]]
         }
-
+        
         // [2, 3, 1, 2, 1, 3]
         return allCards;
 }
@@ -47,20 +48,25 @@ function generateCards(count) {
 // give an index to each card and match it with a number 
 
 function backOfCards() {
-
-        const allCards = generateCards(valueInput);
+        container.innerHTML = "";
+        const allCards = generateCards(input.value);
 
         for (i = 0; i < allCards.length ; i++) {
-
-                let cards = document.createElement("div");
-                cards.textContent = "??";
-                container.appendChild(cards);
-                cards.classList.add("card");
-                cards.dataset.number = allCards[i];
-                console.log(cards.dataset.number);
+                let card = document.createElement("div");
+                card.textContent = "??";
+                container.appendChild(card);
+                card.classList.add("card");
+                card.dataset.number = allCards[i];
+                card.addEventListener("click", showNumber);
+                function showNumber() {
+                        card.innerHTML = card.dataset.number;
+                }
+                setTimeout(showNumber, 3000);
         }
 }
  
+
+
 
 // when car clicked show the data number for 3 sec 
 // if 1 card is clicked wait for another to be clicked
