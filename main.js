@@ -1,7 +1,6 @@
 
 const container = document.querySelector("#memoryCards");
 container.classList.add("container");
-
 container.querySelector(".memoryCard").remove();
 
 let input = document.getElementById("inputNbrOfCard");
@@ -11,17 +10,6 @@ let input = document.getElementById("inputNbrOfCard");
 const btn = document.getElementById("btnRestart");
 document.getElementById("btnRestart").innerHTML = "start";
 btn.addEventListener("click", backOfCards);
-
-// if (btn.clicked == true){
-//         document.getElementById("btnRestart").innerHTML  = "restart";
-// }
-
-
-// function updateInput(){
-//  if new value change the var 
-
-// }
-
 
 // generate random numbers    
 
@@ -44,25 +32,29 @@ function generateCards(count) {
         return allCards;
 }
 
-
-// give an index to each card and match it with a number 
-
 function backOfCards() {
+ 
         container.innerHTML = "";
         const allCards = generateCards(input.value);
 
         for (i = 0; i < allCards.length ; i++) {
+
                 let card = document.createElement("div");
                 card.textContent = "??";
                 container.appendChild(card);
                 card.classList.add("card");
+
                 card.dataset.number = allCards[i];
-                card.addEventListener("click", showNumber);
+                
+                
+                
                 function showNumber() {
+
                         card.innerHTML = card.dataset.number;
                 }
+matchMedia
                 setTimeout(showNumber, 3000);
-        }
+        }card.addEventListener("click", showNumber);
 }
  
 
@@ -73,3 +65,4 @@ function backOfCards() {
 // if 2 cards clicked compare them 
 // if the cards are the same make them disappear and add + 1 to the score 
 // Else put a message that says wrong and move on 
+
