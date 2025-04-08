@@ -11,6 +11,16 @@ const btn = document.getElementById("btnRestart");
 document.getElementById("btnRestart").innerHTML = "start";
 btn.addEventListener("click", backOfCards);
 
+
+// first clicked card 
+
+let firstCard = null;
+
+// score id 
+
+let scoreObject = document.getElementById("currentScore"); 
+let score = scoreObject.innerHTML = 0;
+typeof score;
 // generate random numbers    
 
 function generateCards(count) {
@@ -27,17 +37,17 @@ function generateCards(count) {
 
                 [allCards[i], allCards[j]] = [allCards[j], allCards[i]]
         }
-        
+
         // [2, 3, 1, 2, 1, 3]
         return allCards;
 }
 
 function backOfCards() {
- 
+
         container.innerHTML = "";
         const allCards = generateCards(input.value);
 
-        for (i = 0; i < allCards.length ; i++) {
+        for (i = 0; i < allCards.length; i++) {
 
                 let card = document.createElement("div");
                 card.textContent = "??";
@@ -45,24 +55,32 @@ function backOfCards() {
                 card.classList.add("card");
 
                 card.dataset.number = allCards[i];
-                
-                
-                
-                function showNumber() {
-
-                        card.innerHTML = card.dataset.number;
-                }
-matchMedia
-                setTimeout(showNumber, 3000);
-        }card.addEventListener("click", showNumber);
+               
+                // setTimeout(showNumber, 3000);
+                card.addEventListener("click", () => showNumber(card) );
+        } 
 }
- 
 
+function showNumber(card) {
 
+        card.innerHTML = card.dataset.number;
 
-// when car clicked show the data number for 3 sec 
-// if 1 card is clicked wait for another to be clicked
-// if 2 cards clicked compare them 
-// if the cards are the same make them disappear and add + 1 to the score 
-// Else put a message that says wrong and move on 
+        if (firstCard === null) {
+                firstCard = card;
+        }
+        else if (firstCard.dataset.number === card.dataset.number){
+                let score = scoreObject.innerHTML = 0;
+                newScore= score.innerHTML = ++score;
+                // supp 2 cartes (pointer event none,opacité 0)
+                firstCard = null;
+        }
+        else {
+                setTimeout(() => {
+                card.textContent = "??";
+                firstCard.textContent = "??"; 
+                firstCard = null;
+                }, 1000);
+        }
+
+}
 
